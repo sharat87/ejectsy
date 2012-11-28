@@ -120,7 +120,9 @@ class EjectsyApp:
         print('Opening volume', menu_item, volume)
         # TODO: xdg-open has informative return codes. Use them for error
         # reporting to the user.
-        sp.call(['xdg-open', volume.get_mount().get_root().get_uri()])
+        # FIXME: This process doesn't fork off if `nautilus` isn't already
+        # running. In such cases, nautilus gets killed when ejectsy is killed.
+        sp.Popen(['xdg-open', volume.get_mount().get_root().get_uri()])
 
     def on_right_click(self, icon, button, time):
         menu = gtk.Menu()
