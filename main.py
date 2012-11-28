@@ -18,12 +18,21 @@ class EjectsyApp:
 
     def __init__(self):
         self.status_icon = gtk.StatusIcon()
+        self.status_icon.set_visible(False)
+
         self.status_icon.set_from_stock(gtk.STOCK_HARDDISK)
         self.status_icon.connect('activate', self.on_left_click)
         self.status_icon.connect('popup-menu', self.on_right_click)
         self.status_icon.set_tooltip('Ejectsy')
 
         self.monitor = gio.VolumeMonitor()
+        self.update_ui()
+
+    def update_ui(self):
+        volumes = filter(lambda v: not self.is_internal(v),
+            self.monitor.get_volumes())
+
+        self.status_icon.set_visible(bool(volumes))
 
     def is_internal(self, volume):
 
