@@ -79,23 +79,15 @@ class EjectsyApp:
 
             # XXX: Show something if `not volume.can_mount`.
             if volume.get_mount() is None:
-                mount_item = gtk.MenuItem('Mount')
-                mount_item.connect('activate', self.mount, volume)
-                submenu.append(mount_item)
-
-                mount_open_item = gtk.MenuItem('Mount and Open')
-                mount_open_item.connect('activate', self.mount_and_open,
-                        volume)
-                submenu.append(mount_open_item)
+                submenu.append(self.mk_menu_item('Mount', self.mount, volume))
+                submenu.append(self.mk_menu_item('Mount and Open',
+                    self.mount_and_open, volume))
 
             else:
-                open_item = gtk.MenuItem('Open')
-                open_item.connect('activate', self.open_volume, volume)
-                submenu.append(open_item)
-
-                unmount_item = gtk.MenuItem('Unmount')
-                unmount_item.connect('activate', self.unmount, volume)
-                submenu.append(unmount_item)
+                submenu.append(
+                        self.mk_menu_item('Open', self.open_volume, volume))
+                submenu.append(
+                        self.mk_menu_item('Unmount', self.unmount, volume))
 
         if len(popup) == 0:
             dummy_item = gtk.MenuItem('No volumes detected')
@@ -105,6 +97,11 @@ class EjectsyApp:
         popup.show_all()
         popup.popup(None, None, gtk.status_icon_position_menu, event.button,
                 event.time, icon)
+
+    def mk_menu_item(self, label, activate_callback, *args):
+        item = gtk.MenuItem(label)
+        item.connect('activate', activate_callback, *args)
+        return item
 
     def mount(self, menu_item, volume):
         print('Mounting', menu_item, volume)
