@@ -26,13 +26,27 @@ class EjectsyApp:
         self.status_icon.set_tooltip('Ejectsy')
 
         self.monitor = gio.VolumeMonitor()
+        self.monitor.connect('volume-added', self.on_volume_added)
+        self.monitor.connect('volume-removed', self.on_volume_removed)
+
         self.update_ui()
 
-    def update_ui(self):
-        volumes = filter(lambda v: not self.is_internal(v),
-            self.monitor.get_volumes())
+    def update_ui(self, show_icon=None):
 
-        self.status_icon.set_visible(bool(volumes))
+        if show_icon is None:
+            show_icon = bool(filter(lambda v: not self.is_internal(v),
+                self.monitor.get_volumes()))
+
+        self.status_icon.set_visible(show_icon)
+
+    def on_volume_added(self, monitor, volume):
+        print('New volume', volume)
+        if not self.is_internal(volume):
+            self.update_ui(True)
+
+    def on_volume_removed(self, monitor, volume):
+        print('Volume removed', volume)
+        self.update_ui()
 
     def is_internal(self, volume):
 
