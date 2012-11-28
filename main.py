@@ -112,13 +112,8 @@ class EjectsyApp:
 
     def mount_and_open(self, menu_item, volume):
         print('Mounting and opening', menu_item, volume)
-
-        def do_open(volume, result):
-            # TODO: xdg-open has informative return codes. Use them for error
-            # reporting to the user.
-            sp.call(['xdg-open', volume.get_mount().get_root().get_uri()])
-
-        volume.mount(None, do_open)
+        volume.mount(None,
+                lambda volume, result: self.open_volume(menu_item, volume))
 
     def unmount(self, menu_item, volume):
         print('Unmounting', menu_item, volume)
@@ -126,6 +121,8 @@ class EjectsyApp:
 
     def open_volume(self, menu_item, volume):
         print('Opening volume', menu_item, volume)
+        # TODO: xdg-open has informative return codes. Use them for error
+        # reporting to the user.
         sp.call(['xdg-open', volume.get_mount().get_root().get_uri()])
 
     def on_right_click(self, icon, button, time):
