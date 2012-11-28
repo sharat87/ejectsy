@@ -149,8 +149,12 @@ class EjectsyApp:
 
         about_dialog.set_destroy_with_parent(True)
         about_dialog.set_name('Ejectsy')
+        about_dialog.set_comments('A simple non-intrusive external-disk '
+                'management application, that sits in the tray.')
+        about_dialog.set_website('http://github.com/sharat87/ejectsy')
         about_dialog.set_version('0.1')
         about_dialog.set_authors(['Shrikant Sharat Kandula'])
+        about_dialog.set_license('MIT License (http://mitl.sharats.me)')
 
         about_dialog.run()
         about_dialog.destroy()
