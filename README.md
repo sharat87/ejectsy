@@ -1,7 +1,7 @@
 # Ejectsy
 
 An external/usb drive monitor that sits in the tray. For Linux. Written in
-python. Inspired by [ejecter][https://launchpad.net/ejecter].
+python. Inspired by [ejecter](https://launchpad.net/ejecter).
 
 # Usage
 
@@ -22,26 +22,26 @@ icon to get a list of the devices connected and manage them.
 
 Take a look at the following screenshots to get an idea of what you can do.
 
-![screenshot-unmounted][https://github.com/sharat87/ejectsy/raw/master/screenshots/menu-unmounted.png
-"With an unmounted device"]
+![screenshot-unmounted](https://github.com/sharat87/ejectsy/raw/master/screenshots/menu-unmounted.png
+"With an unmounted device")
 
-![screenshot-mounted][https://github.com/sharat87/ejectsy/raw/master/screenshots/menu-mounted.png
-"With a mounted device"]
+![screenshot-mounted](https://github.com/sharat87/ejectsy/raw/master/screenshots/menu-mounted.png
+"With a mounted device")
 
 # Meta
 
 ## Feedback
 
 Found a problem or otherwise have something to say? [Open an
-issue][https://github.com/sharat87/ejectsy/issues] or [drop me a
-line][mailto:shrikantsharat.k@gmail.com].
+issue](https://github.com/sharat87/ejectsy/issues) or [drop me a
+line](mailto:shrikantsharat.k@gmail.com).
 
 ## Alternatives
 
-- [Ejecter][https://launchpad.net/ejecter]
-- [Media Applet][http://media-applet.googlecode.com]
-- [Mountie][https://github.com/Toobkrow/mountie]
+- [Ejecter](https://launchpad.net/ejecter)
+- [Media Applet](http://media-applet.googlecode.com)
+- [Mountie](https://github.com/Toobkrow/mountie)
 
 ## License
 
-[MIT License][http://mitl.sharats.me]
+[MIT License](http://mitl.sharats.me)
